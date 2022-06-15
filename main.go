@@ -4,7 +4,7 @@ import "fmt"
 
 func main(){
 	fmt.Println("================================================")
-	fmt.Println("|| APLIKASI PENENTUAN RUTE PENYEBARAN DOKUMEN ||")
+	fmt.Println("|| PROGRAM PENENTUAN RUTE PENYEBARAN DOKUMEN ||")
 	fmt.Println("||    ANTAR KECAMATAN DI KABUPATEN BANGLI    ||")
 	fmt.Println("================================================")
 
@@ -30,14 +30,14 @@ func main(){
 	}
 	fmt.Println("== Daftar Kode Kecamatan ==")
 	for i, data := range dataKantor {
-		println("|", i+1,"=",data)
+		println("|-", i+1,"=",data)
 	}
 	fmt.Println("===========================")
 	fmt.Print("Masukan kode kecamatan untuk menentukan titik awal : ")
 	var start int;
 	fmt.Scanf("%d", &start)
 	fmt.Println("========================================================")
-	fmt.Print("Rute penyebaran dokumen dengan titik awal kantor camat ",dataKantor[start-1],": ")
+	fmt.Println("Rute penyebaran dokumen dengan titik awal kantor camat ",dataKantor[start-1],": ")
 	process(start-1, isVisited, dataJarak, dataKantor)
 }
 
@@ -62,7 +62,7 @@ func process(start int, isVisited [4]int, dataJarak [4][4]float32, dataKantor [4
 	  }
 	}
 	if (repeat){
-	  fmt.Print("->", dataKantor[saveMin]);
+	  fmt.Print(" -> Kantor Camat ", dataKantor[saveMin]);
 	  isVisited[saveMin] = 1;
 	  process(start, isVisited, dataJarak, dataKantor);
 	}
