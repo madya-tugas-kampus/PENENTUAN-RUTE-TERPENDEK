@@ -42,6 +42,7 @@ func main(){
 }
 
 func process(start int, isVisited [4]int, dataJarak [4][4]float32, dataKantor [4]string){
+	floydWarshall(dataJarak)
 	var(
 		min float32
 		saveMin int
@@ -67,4 +68,16 @@ func process(start int, isVisited [4]int, dataJarak [4][4]float32, dataKantor [4
 	  process(start, isVisited, dataJarak, dataKantor);
 	}
   
+}
+
+func floydWarshall(dataJarak [4][4]float32){
+	for i := 0; i < len(dataJarak); i++ {
+		for j := 0; j < len(dataJarak); j++ {
+			for k := 0; k < len(dataJarak); k++ {
+				if (dataJarak[j][i] + dataJarak[i][k] < dataJarak[j][k]) {
+					dataJarak[j][k] = dataJarak[j][i] + dataJarak[i][k]
+				}
+			}
+		}
+	}
 }
